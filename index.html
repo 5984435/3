@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Working Harder Than Any Billionaire You Admire. That's Exactly the Problem.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* === RESET + VARIABLES === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:          #1a1208;
+      --warm-mid:     #5c4a2a;
+      --accent:       #c8622a;
+      --accent-light: #f0e0d0;
+      --paper:        #faf7f2;
+      --rule:         #e0d8cc;
+      --serif:        'Playfair Display', Georgia, serif;
+      --body:         'Source Serif 4', Georgia, serif;
+      --mono:         'DM Mono', monospace;
+    }
+
+    html { background: var(--paper); }
+
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.8;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    /* === TOP BAR === */
+    .topbar {
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      z-index: 100;
+    }
+    .topbar-pub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+    }
+    .topbar-dot { color: var(--rule); }
+    .topbar-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .topbar-read {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--warm-mid);
+    }
+
+    /* === HERO === */
+    .hero {
+      max-width: 760px;
+      margin: 72px auto 0;
+      padding: 0 32px;
+    }
+    .tag-pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      padding: 3px 10px;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 24px;
+    }
+    .subtitle {
+      font-size: 1.18rem;
+      color: var(--warm-mid);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      padding-left: 20px;
+      padding-bottom: 40px;
+      border-left: 3px solid var(--accent);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* === CONTENT === */
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px 120px;
+    }
+    .content p {
+      margin-bottom: 22px;
+    }
+    .content strong {
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .content em {
+      font-style: italic;
+    }
+
+    /* === SECTION HEADER === */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 56px 0 28px;
+    }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* === PULL QUOTE === */
+    .pull-quote {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-light);
+      padding: 28px 36px;
+      margin: 40px 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .pull-quote p {
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .pull-quote cite {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      font-style: normal;
+    }
+
+    /* === CALLOUT BOX === */
+    .callout {
+      background: var(--ink);
+      color: var(--accent-light);
+      padding: 28px 36px;
+      border-radius: 2px;
+      margin: 40px 0;
+    }
+    .callout-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .callout p {
+      font-size: .95rem;
+      line-height: 1.75;
+      color: #d0c4b4;
+      margin-bottom: 10px;
+    }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* === ARTICLE IMAGE === */
+    .article-img {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .article-img img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .article-img figcaption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--warm-mid);
+      margin-top: 12px;
+      text-transform: uppercase;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 48px 0;
+    }
+
+    /* === CTA Newsletter === */
+    .cta-wrapper {
+      background: var(--ink);
+      padding: 72px 32px;
+      margin-top: 0;
+    }
+    .cta-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .cta-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .cta-eyebrow span {
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 700;
+      color: #faf7f2;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      letter-spacing: -.01em;
+    }
+    .cta-heading em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .cta-body {
+      font-family: var(--body);
+      font-size: .98rem;
+      font-weight: 300;
+      color: #b8a898;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .cta-bullets {
+      list-style: none;
+      margin-bottom: 36px;
+    }
+    .cta-bullets li {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: .05em;
+      color: #d0c4b4;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .cta-bullets li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .cta-form { margin-bottom: 16px; }
+    .cta-wrapper .seva-fields.formkit-fields {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+      margin: 0;
+      width: 100%;
+    }
+    .cta-wrapper .formkit-field {
+      flex: 1 1 auto;
+      margin: 0;
+    }
+    .cta-wrapper .formkit-input {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 2px;
+      padding: 14px 18px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #faf7f2;
+      outline: none;
+      margin: 0;
+    }
+    .cta-wrapper .formkit-input::placeholder { color: #6b5a4a; opacity: 1; }
+    .cta-wrapper .formkit-input:focus { border-color: var(--accent); }
+    .cta-wrapper .formkit-submit {
+      flex: 0 0 auto;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s;
+      margin: 0;
+      padding: 0;
+    }
+    .cta-wrapper .formkit-submit > span {
+      display: block;
+      padding: 14px 28px;
+    }
+    .cta-wrapper .formkit-submit:hover { background: #a8501e; }
+    .cta-disclaimer {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .06em;
+      color: #6b5a4a;
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+    .cta-disclaimer strong {
+      color: #a0907e;
+      font-weight: 500;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      .hero { padding: 0 20px; margin-top: 48px; }
+      .content { padding: 0 20px 80px; }
+      h1 { font-size: 1.8rem; }
+      .topbar { padding: 12px 20px; }
+      .cta-wrapper { padding: 48px 20px; }
+      .cta-wrapper .seva-fields.formkit-fields { flex-wrap: wrap; }
+      .pull-quote { padding: 20px 24px; }
+      .callout { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span class="topbar-pub">Julian Locke</span>
+    <span class="topbar-dot">·</span>
+    <span class="topbar-tag">Mindset</span>
+    <span class="topbar-read">10 min read</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="tag-pill">Mindset</div>
+    <h1>You're Working Harder Than Any Billionaire You Admire. That's Exactly the Problem.</h1>
+    <p class="subtitle">Alan Watts died 50 years ago. His lectures still pull millions of views. There's a reason the people running $20 trillion hedge funds are obsessing over a dead man's ideas.</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <p>You don't have a work ethic problem. You have a direction problem.</p>
+
+    <p>Ray Dalio manages $20 trillion. He meditates every morning. Jack Dorsey built two billion-dollar companies and meditates every morning. Novak Djokovic, the most decorated tennis player alive, meditates every morning.</p>
+
+    <p>You're awake at midnight grinding spreadsheets. They're sitting in silence doing nothing.</p>
+
+    <p>Decide who's winning.</p>
+
+    <figure class="article-img">
+      <img src="img-1.png" alt="Empty desk at midnight — the hollow cost of grinding the wrong direction" />
+      <figcaption>The grind that leads nowhere</figcaption>
+    </figure>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>I Was the Idiot Who Thought Suffering Was the Strategy</h2>
+    </div>
+
+    <p>I thought high-performers were just better versions of me. More disciplined. More willing to suffer.</p>
+
+    <p>So I suffered. I built a system for my mornings, a system for my reading, a system for my evenings. I treated every waking hour like a unit of production that had to justify itself before I could sleep.</p>
+
+    <p>I burned $11,000 on a business I'd planned for six months, convinced that enough preparation would force success. The business failed in 90 days. The money was gone in 47.</p>
+
+    <p>When I looked at what went wrong, I realized I'd been asking the wrong question for years. I'd been asking "how do I work harder?" The people ahead of me were asking something completely different.</p>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>A Dead Man Has the Answer You've Been Looking For</h2>
+    </div>
+
+    <p>Alan Watts died in 1973. He was 58 years old. His lectures still pull millions of YouTube views, more than five decades after his death. His book <em>The Way of Zen</em> was written 70 years ago and has never stopped selling.</p>
+
+    <p>That's not nostalgia. When a dead man's ideas keep compounding, it means he was describing something structurally true about human nature — something that doesn't expire with the year he wrote it.</p>
+
+    <p>Watts spent his life studying one question: why are Westerners so miserable despite having everything? His answer is surgical and uncomfortable. He said we're not suffering because life is hard. We're suffering because we're running the wrong operating system entirely.</p>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>The 3 Beliefs That Are Destroying You</h2>
+    </div>
+
+    <p>Watts identified three beliefs that Westerners run on autopilot. Not character flaws — installed operating systems. They are the direct source of your anxiety, your restlessness, and your inability to feel satisfied no matter what you produce.</p>
+
+    <p><strong>Trap one: You think adding more will make you happy.</strong></p>
+
+    <p>More money. More status. More achievements. More credentials. You treat yourself like a half-empty glass that needs filling. Watts called this a structural delusion — not a motivation problem. The glass has no bottom. You can pour your entire life into it and register nothing.</p>
+
+    <p>Steve Jobs flew to a Japanese Zen temple and trained in person. He meditated every morning without exception. His home had almost no furniture. He ate fruit for weeks at a time. The empty simplicity of every Apple product is Zen's subtraction logic made physical. He didn't create by adding features. He created by cutting until only the essential survived.</p>
+
+    <p><strong>Trap two: You're living everywhere except right now.</strong></p>
+
+    <p>Your brain drags the past forward and projects the future backward, and you sit in the middle of that collision calling it "thinking." Watts said almost all human suffering is generated this way — not by actual present circumstances, but by the story your mind tells about what happened and what might happen.</p>
+
+    <p><strong>Trap three: You worship effort.</strong></p>
+
+    <p>You've been told that grinding through resistance is how you become someone. Watts called this the most destructive belief in the Western worldview. Effort — real forced effort — means you're working against your natural direction. And anything you force will eventually push back.</p>
+
+    <blockquote class="pull-quote">
+      <p>"The glass has no bottom. You can pour your entire life into it and register nothing."</p>
+      <cite>— Julian Locke</cite>
+    </blockquote>
+
+    <figure class="article-img">
+      <img src="img-2.png" alt="A tarnished trophy — the hollow promise of external achievement" />
+      <figcaption>The prize that never satisfies</figcaption>
+    </figure>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Why Silence Produces More Than Hustle</h2>
+    </div>
+
+    <p>Here's the mechanism Watts built his entire framework around: genuine output requires stillness, not stimulation.</p>
+
+    <p>He pointed to traditional Japanese art — calligraphy, garden design, haiku — all born from deliberate emptiness. Not from brainstorming sessions. Not from consuming inspiration. From silence first, creation second.</p>
+
+    <p>The ancients had a framework for this that predates Watts by a thousand years: good ideas emerge in three places. On a horse (any moving vehicle today). In bed. In the bathroom. What those three locations share — you're alone, understimulated, and slightly bored. Your brain isn't processing new inputs. It's finally working on its own problems.</p>
+
+    <p>Now look at what you've done to those gaps. Every elevator, every commute, every meal alone — filled. You've systematically eliminated the conditions under which clarity becomes possible.</p>
+
+    <p>Satoshi Sato built Space Data, made Forbes 30 Under 30 Asia, and then hit a wall. Industry gossip and competitor noise were corrupting his judgment. He deleted every social app from his phone — no Instagram, no Twitter, no LinkedIn. Two weeks later, the anxiety about things that genuinely didn't matter had stopped. He described it as waking from a spell. He couldn't understand why any of it had seemed important. He moved into a completely different industry and succeeded again.</p>
+
+    <p>That's Watts' unlearning principle running live. Don't add new information to a cluttered system. Clear the system first. Choose what you put back.</p>
+
+    <p>I spent years filling every silent minute with "useful" content — podcasts, newsletters, YouTube. Empty time felt like waste. What I was actually doing was preventing the insights I needed from ever surfacing. They had no opening.</p>
+
+    <figure class="article-img">
+      <img src="img-3.png" alt="Empty room with window light — the power of stillness" />
+      <figcaption>What silence makes possible</figcaption>
+    </figure>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Your Brain Is Hardwired for This. You've Just Been Blocking It.</h2>
+    </div>
+
+    <p>Neuroscience confirmed Watts' core insight about twenty years ago.</p>
+
+    <p>Deep absorption — what researchers now call flow — temporarily reduces activity in the prefrontal cortex. That's the region that monitors time, rehearses social anxiety, and runs the loop of "what if this fails." When it quiets, performance improves. Boredom disappears. Time becomes dense.</p>
+
+    <p>You cannot force this state. You can only remove the barriers to it. The primary barrier: you're doing something you don't care about.</p>
+
+    <p>Think about what it felt like to be ten years old. You lost entire afternoons to things you loved. Time didn't feel like a resource to manage — it vanished. You were genuinely present not because you'd studied mindfulness, but because you were absorbed in something real.</p>
+
+    <p>That quality of experience didn't go anywhere. You replaced it with obligation.</p>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>Money-First Is a Trap. Here's the Mechanism.</h2>
+    </div>
+
+    <p>Watts' most uncomfortable idea: if you're working primarily for money, you are permanently in the wrong lane.</p>
+
+    <p>His logic is mechanical. If you don't love the work, you'll always do the minimum required. You'll never exceed what the job demands. You'll never develop the depth that commands real value. Your income will reflect that ceiling. And you'll be miserable for every year it takes you to figure this out.</p>
+
+    <p>He was direct about it: "If money is the most important thing to you, you'll spend your life completely wasting it."</p>
+
+    <p>Because money-first means working against your natural current. And working against your current means you will never build real speed.</p>
+
+    <p>The people ahead of you found the one thing they'd do for free. They built everything else around that. The money followed the obsession — not the other way around.</p>
+
+    <p>I write. I've always written — bad posts, long forum comments, private documents nobody read. I wrote because I couldn't stop, not because it was working. Now it compounds. That sequencing is not optional: obsession first, monetization second, in that order only.</p>
+
+    <figure class="article-img">
+      <img src="img-4.png" alt="Hands writing in a journal — deep creative absorption" />
+      <figcaption>Obsession compounds. Obligation doesn't.</figcaption>
+    </figure>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2>Nobody Listens to Music to Get to the End</h2>
+    </div>
+
+    <p>Watts had one line that stopped me cold.</p>
+
+    <p>"Life is like music. Nobody listens to get to the end."</p>
+
+    <p>You don't listen to your favorite track to reach the final note. You're inside the melody, the progression, each moment of sound as it arrives. The point is never the destination. The point is always the experience of being inside it.</p>
+
+    <p>And yet the dominant framework tells you to spend your entire existence preparing for something later. Students grinding for the life they'll live after school. Workers grinding toward retirement. People deferring everything real to the moment they finally have enough.</p>
+
+    <p>The problem: the best years for certain experiences don't wait. You can't buy back what you didn't do at 27. The people who spend 30 years optimizing for financial independence often arrive with capital and without the physical or psychological capacity to use it the ways that would have mattered. The window was open. They were too busy to go through it.</p>
+
+    <p>Watts isn't telling you to abandon ambition. He's telling you to stop treating the present as a waiting room for the life you actually want to live.</p>
+
+    <div class="callout">
+      <div class="callout-label">The Framework</div>
+      <p><strong style="color:#f0e0d0;">Three things to subtract:</strong> The belief that adding more will make you happy. Living in past or future instead of now. Forcing effort toward goals chosen for the wrong reasons.</p>
+      <p><strong style="color:#f0e0d0;">Three things to build:</strong> Deliberate silence. Present absorption in the work itself. A field you'd choose without the money.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2>One Action. Do It Today.</h2>
+    </div>
+
+    <p>Delete one app from your phone for seven days. Whichever one fills your silence without your permission — the one you open before you've decided to open it.</p>
+
+    <p>Seven days of even partial quiet will change what surfaces in your mind. You'll start noticing what you actually want versus what the feed taught you to want. Those two things are not the same thing.</p>
+
+    <p>The gap between them is where your real life is.</p>
+
+    <p>The newsletter goes deeper than anything I can publish here. Get on it now — or don't. But if you're still running the same mental software you were running five minutes ago, you already know where that ends.</p>
+
+  </main>
+
+  <!-- Newsletter CTA -->
+  <section class="cta-wrapper">
+    <div class="cta-inner">
+      <div class="cta-eyebrow"><span></span>Julian Locke · Private Newsletter</div>
+      <h2 class="cta-heading">What Medium Won't<br><em>Let Me Publish.</em></h2>
+      <p class="cta-body">
+        The ideas in this article are just the surface. I send one email with the kind of thinking that gets flagged, throttled, or quietly buried on every major platform. No algorithm. No editor. No filter.
+      </p>
+      <ul class="cta-bullets">
+        <li>How the world actually works — the mechanics they don't teach in school</li>
+        <li>The real psychology of money, power, and leverage</li>
+        <li>How to use your subconscious mind the way high-performers actually do it</li>
+        <li>The conversations that happen behind closed doors — and what to do with them</li>
+        <li>Moves that look counterintuitive from the outside, but compound quietly</li>
+      </ul>
+      <div class="cta-form" id="cta-form-wrap">
+        <div class="seva-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" id="brevo-email-input" type="email" placeholder="your@email.com" required aria-label="Email Address" />
+          </div>
+          <button class="formkit-submit" id="brevo-submit-btn" type="button">Get Access</button>
+        </div>
+      </div>
+      <p class="cta-disclaimer">
+        <strong>Only register if you're serious about changing your life. Casual readers need not apply.</strong>
+      </p>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var btn    = document.getElementById('brevo-submit-btn');
+    var input  = document.getElementById('brevo-email-input');
+    var wrap   = document.getElementById('cta-form-wrap');
+
+    if (!btn || !input) return;
+
+    btn.addEventListener('click', function() {
+      var email = input.value.trim();
+      if (!email || !input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+
+      var formData = new FormData();
+      formData.append('EMAIL', email);
+      formData.append('email_address_check', '');
+      formData.append('locale', 'en');
+
+      fetch('https://fed3751b.sibforms.com/serve/MUIFACcwIB8ljAOF_HJ3nRb6_xUQclwKk8xpimBlsoH36ZoiNH76gKig7QFcdUvJiRnnm3VAvM_9n301ZdTJgNmxZRqhx0i24A3XgWLWChoRRpxb7dTln2W8m3GCQtN8Tl3l_Nn6-7J6yZYR1AODxCB5vAXA4-__EpcPhe1Hw8eg1pwCKDmSCht1j9mpjjU9-rDF-UWc9OMp_uzDVA==', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      })
+      .then(function() {
+        wrap.innerHTML = [
+          '<div style="',
+          'background:rgba(200,98,42,.15);',
+          'border:1px solid #c8622a;',
+          'border-radius:2px;',
+          'padding:18px 28px;',
+          'font-family:var(--mono,monospace);',
+          'font-size:12px;',
+          'letter-spacing:.12em;',
+          'color:#ffffff;',
+          'text-align:center;',
+          'text-transform:uppercase;',
+          '">',
+          '\u2713\u2002 You\u2019re in. Please check your spam folder.',
+          '</div>'
+        ].join('');
+      });
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script>
+
+</body>
+</html>
